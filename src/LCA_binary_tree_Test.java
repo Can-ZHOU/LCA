@@ -5,6 +5,7 @@ import org.junit.Test;
 public class LCA_binary_tree_Test {
 
 	@Test
+	//true case
 	public void testLCA_binary_tree() {
 		LCA_binary_tree tree = new LCA_binary_tree(); 
 		tree.root = new Node(1); 
