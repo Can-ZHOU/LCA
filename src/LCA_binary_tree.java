@@ -1,5 +1,10 @@
-//Reference: https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+/**
+ * Found the solutions in Internet.
+ * Reference: https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+ */
 
+import java.util.ArrayList;
+import java.util.List;
 class Node 
 { 
 	int data; 
@@ -14,40 +19,49 @@ class Node
 
 public class LCA_binary_tree
 { 
-	//Root of the Binary Tree 
-	Node root; 
+	Node root;
+	private List<Integer> path1 = new ArrayList<>();
+	private List<Integer> path2 = new ArrayList<>();
 
-	Node findLCA(int n1, int n2) 
-	{ 
-		return findLCA(root, n1, n2); 
-	} 
+	public int findLCA(int v, int w) {
+		path1.clear();
+		path2.clear();
+		return findLCA(root, v, w);
+	}
 
-	// This function returns pointer to LCA of two given 
-	// values n1 and n2. This function assumes that n1 and 
-	// n2 are present in Binary Tree 
-	Node findLCA(Node node, int n1, int n2) 
-	{ 
-		// Base case 
-		if (node == null) 
-			return null; 
+	private int findLCA(Node root, int v, int w) {
+		if (!findPath(root, v, path1) || !findPath(root, w, path2)) {
+			return -1;
+		}
+		int i;
+		for (i = 0; i < path1.size() && i < path2.size(); i++) {
+			if (!path1.get(i).equals(path2.get(i)))
+				break;
+		}
+		return path1.get(i-1);
+	}
 
-		// If either n1 or n2 matches with root's key, report 
-		// the presence by returning root (Note that if a key is 
-		// ancestor of other, then the ancestor key becomes LCA 
-		if (node.data == n1 || node.data == n2) 
-			return node; 
+	private boolean findPath(Node root, int n, List<Integer> path)
+	{
+		if(n<0){
+			return false;
+		}
+		if (root == null) {
+			return false;
+		}
+		path.add(root.data);
+		if (root.data == n) {
+			return true;
+		}
+		if (root.left != null && findPath(root.left, n, path)) {
+			return true;
+		}
+		if (root.right != null && findPath(root.right, n, path)) {
+			return true;
+		}
+		path.remove(path.size()-1);
+		return false;
+	}
 
-		// Look for keys in left and right subtrees 
-		Node left_lca = findLCA(node.left, n1, n2); 
-		Node right_lca = findLCA(node.right, n1, n2); 
 
-		// If both of the above calls return Non-NULL, then one key 
-		// is present in once subtree and other is present in other, 
-		// So this node is the LCA 
-		if (left_lca!=null && right_lca!=null) 
-			return node; 
-
-		// Otherwise check if left subtree or right subtree is LCA 
-		return (left_lca != null) ? left_lca : right_lca; 
-	} 
 } 
