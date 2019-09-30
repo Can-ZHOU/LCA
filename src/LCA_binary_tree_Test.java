@@ -3,21 +3,44 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class LCA_binary_tree_Test {
-
+	
+	/**
+	 * Testing the node class.
+	 */
 	@Test
-	//true case
-	public void testLCA_binary_tree() {
+	public void testNode() {
+		Node node = new Node(1);
+		assertEquals("Node(1)-data", 1, node.data);
+		assertNull("Node(1)-left_node", node.left);
+		assertNull("Node(1)-right_node", node.right);
+	}
+
+	/**
+	 * Testing the empty binary tree.
+	 * 
+	 * !!!! There has a bug, as the data without valuation is 0.
+	 * 
+	 */
+	@Test
+	public void testEmpty() {
+		LCA_binary_tree tree = new LCA_binary_tree();
+		assertNull("Empty binary tree", tree.findLCA(1, 2).data);
+	}		
+
+	/**
+	 * Testing the binary tree which only has one node.
+	 * 
+	 * ****** Visualization ******
+	 *             1
+	 *            / \
+	 *        null   null  
+	 * ***************************
+	 */
+	@Test
+	public void testOneElement() {
 		LCA_binary_tree tree = new LCA_binary_tree(); 
-		tree.root = new Node(1); 
-		tree.root.left = new Node(2); 
-		tree.root.right = new Node(3); 
-		tree.root.left.left = new Node(4); 
-		tree.root.left.right = new Node(5); 
-		tree.root.right.left = new Node(6); 
-		tree.root.right.right = new Node(7);
-		
-		int expectedResult = 1;
-		assertEquals("LCA(7,4)", expectedResult, tree.findLCA(7, 4).data);
+		tree.root = new Node(1);
+		assertNull("Empty binary tree", tree.findLCA(1, 2).data);
 	}
 
 }
