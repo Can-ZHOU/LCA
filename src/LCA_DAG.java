@@ -1,6 +1,7 @@
 /**
  * Found the solutions in Internet.
  * Reference: https://github.com/cassidke/software-eng/blob/master/Assignment%201/DAG.java
+ * 			  https://algs4.cs.princeton.edu/42digraph/Digraph.java.html
  */
 
 import java.util.ArrayList;
@@ -117,6 +118,9 @@ public class LCA_DAG
 	
 	public void findCycle(int v)
 	{
+		if(marked.length == 0) {
+			return;
+		}
 		marked[v] = true;
 		stack[v] = true;
 		
