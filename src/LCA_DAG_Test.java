@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class LCA_DAG_Test {
 
-//~ LCA_DAG class----------------------------------------------------------------------------------
+//~ FindLCA method---------------------------------------------------------------------------------
 	
 	//~ Querying a node that does not exist in the graph-------------------------------------------
 	/**
@@ -203,5 +203,127 @@ public class LCA_DAG_Test {
 		graph.addEdge(2, 0);
 		
 		assertEquals("When there is a cycle in DAG", -1, graph.findLCA(3, 2));
+	}
+	
+	
+	
+	
+	
+//~ other methods----------------------------------------------------------------------------------
+	/**
+	 * Expected = Exception.class
+	 * Can't make a directed graph with less than 0 vertices
+	 */
+	@Test
+	public void exceptionTest(){
+		// There will have an error.
+		LCA_DAG graph = new LCA_DAG(-10);
+	}
+	
+	/**
+	 * As negative, will print a system error and not addEdge.
+	 * The index of node cannot out of bound.
+	 */
+	@Test
+	public void addEdge()
+	{
+		LCA_DAG graph = new LCA_DAG(10);
+		
+		graph.addEdge(1,2);
+		
+		// When nodes' indexes are negative.
+		graph.addEdge(-1, -6);
+		
+		//This won't addEdge as 115 > 2
+		graph.addEdge(2, 115);
+	}
+	
+	/**
+	 * Test the number of directed edges to vertex v.
+	 */
+	@Test
+	public void testIndegree()
+	{
+		LCA_DAG graph = new LCA_DAG(6);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 5);
+		
+		assertEquals(0, graph.indegree(3));
+	}
+	
+	/**
+	 * Test the number of directed edges from vertex v.
+	 */
+	@Test
+	public void testOutdegree()
+	{
+		LCA_DAG graph = new LCA_DAG(7);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 5);
+		
+		assertEquals(1, graph.outdegree(3));
+	}
+	
+	/**
+	 * Test the number V.
+	 */
+	@Test 
+	public void testV()
+	{
+		LCA_DAG graph = new LCA_DAG(10);
+		
+		assertEquals(10, graph.V());
+	}
+	
+	/**
+	 * Test the number E.
+	 */
+	@Test
+	public void testE(){
+		
+		LCA_DAG graph = new LCA_DAG(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 5);
+		
+		assertEquals(2, graph.E());
+	}
+	
+	/**
+	 * Test the adjacent vertices to v.
+	 */
+	@Test
+	public void testAdj()
+	{
+		LCA_DAG graph = new LCA_DAG(10);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(4, 3);
+		
+		String adj = "[4]";
+		assertEquals(adj, graph.adj(2).toString());
+	}
+	
+	/**
+	 * Test whether there has cycle in DAG.
+	 */
+	@Test
+	public void testforCycle()
+	{
+		LCA_DAG graph = new LCA_DAG(3);
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 0);
+		
+		graph.findCycle(0);
+		
+		assertTrue(graph.hasCycle());
 	}
 }
