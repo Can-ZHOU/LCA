@@ -185,4 +185,23 @@ public class LCA_DAG_Test {
 		//This test cannot be passed, which should has two answers 1 or 3.
 		assertEquals("When their common ancestor is themselves", -1, graph.findLCA(6, 2));
 	}
+	
+	/**
+	 * Testing the wrong DAG which has a cycle. It is expected to return -1.
+	 * 
+	 * ****** Visualization ******
+	 *             0
+	 *            / \
+	 *           2 - 1
+	 * ***************************
+	 */
+	@Test
+	public void testWrong_DAG_has_loop() {
+		LCA_DAG graph = new LCA_DAG(3);
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 0);
+		
+		assertEquals("When there is a cycle in DAG", -1, graph.findLCA(3, 2));
+	}
 }
