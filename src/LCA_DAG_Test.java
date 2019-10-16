@@ -52,7 +52,7 @@ public class LCA_DAG_Test {
 	
 	//~ Querying two nodes that exist in DAG-------------------------------------------------------
 	/**
-	 * Testing the common DAG -- case one
+	 * Testing the common DAG -- case one.
 	 * 
 	 * ****** Visualization ******
 	 *             1
@@ -82,9 +82,8 @@ public class LCA_DAG_Test {
 		assertEquals("When their common ancestor is themselves", 2, graph.findLCA(2, 2));
 	}
 	
-	
 	/**
-	 * Testing the common DAG -- case two
+	 * Testing the common DAG -- case two.
 	 * 
 	 * ****** Visualization ******
 	 *             1  
@@ -112,5 +111,78 @@ public class LCA_DAG_Test {
 		assertEquals("When the relationships between two nodes are both sibling and parent-children.", 4, graph.findLCA(4, 5));
 		assertEquals("When one of node is their LCA.", 3, graph.findLCA(6, 3));
 		assertEquals("When their common ancestor is themselves", 2, graph.findLCA(2, 2));
+	}
+	
+	/**
+	 * Testing the linear DAG.
+	 * 
+	 * ****** Visualization ******
+	 *             0
+	 *             |
+	 *             1
+	 *             |
+	 *             2
+	 *             |
+	 *             3
+	 *             |
+	 *             4
+	 *             |
+	 *             5
+	 * ***************************
+	 */
+	@Test
+	public void testLiner() {
+		LCA_DAG graph = new LCA_DAG(5);
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+		graph.addEdge(4, 5);
+		
+		assertEquals("When one of the nodes is their common ancestor_case one", 2, graph.findLCA(4, 2));
+		assertEquals("When one of the nodes is their common ancestor_case two", 3, graph.findLCA(4, 3));
+		assertEquals("When their common ancestor is themselves", 4, graph.findLCA(4, 4));
+	}
+	
+	
+	//~ Querying the wrong binary tree-------------------------------------------------------------
+		/**
+		 * Testing the the wrong DAG -- a DAG with duplicated nodes.
+		 * 
+		 * !!!!!!BUG CANNOT FIX!!!!!!!
+		 * There has duplicated node
+		 * -- 2 in DAG.
+		 * so, for instance, LCA(6,2) 
+		 * should has two answers 1 or 3.
+		 * Therefore, it should not
+		 * pass all the test.
+		 * !!!!!!!!!!!!!!!!!!!!!!!!!!!
+		 * 
+		 * ****** Visualization ******
+		 *             1
+		 *            / \
+		 *          2     3
+		 *         / \   / \
+		 *        4   5 6   2
+		 * ***************************
+		 */
+	@Test
+	public void testWrong_DAG_duplicated_nodes() {
+		LCA_DAG graph = new LCA_DAG(7);
+		graph.addEdge(1, 3);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 2);
+		graph.addEdge(3, 6);
+		graph.addEdge(2, 5);
+		
+		assertEquals("When their parents (upper level) are their ancestors.", 2, graph.findLCA(4, 5));
+		assertEquals("When one of the nodes is their common ancestor", 3, graph.findLCA(3, 6));
+		assertEquals("When their common ancestors before the previous level_case one", 1, graph.findLCA(4, 6));
+		assertEquals("When their common ancestors before the previous level_case two", 1, graph.findLCA(4, 3));
+		assertEquals("When their common ancestor is themselves", 4, graph.findLCA(4, 4));
+		
+		//This test cannot be passed, which should has two answers 1 or 3.
+		assertEquals("When their common ancestor is themselves", -1, graph.findLCA(6, 2));
 	}
 }
