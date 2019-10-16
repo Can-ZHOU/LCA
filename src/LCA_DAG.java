@@ -66,10 +66,6 @@ public class LCA_DAG
 			adj[v].add(w);
 			indegree[w]++;
 			E++;
-		}
-		else
-		{
-			System.out.println("Please enter numbers between 0 and " + (V-1));
 		}		
 	}
 	
