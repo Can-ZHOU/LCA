@@ -17,7 +17,7 @@ public class LCA_binary_tree_Test {
 	}		
 
 	/**
-	 * Testing the binary tree which is no answer for two nodes' LCA. It is expected to return -1.
+	 * Testing the binary tree which two nodes do not exist in the graph. It is expected to return -1.
 	 * 
 	 * ****** Visualization ******
 	 *             1
@@ -49,7 +49,6 @@ public class LCA_binary_tree_Test {
 		tree.root = new Node(1);
 		assertEquals("One element binary tree", -1, tree.findLCA(1, 2));
 	}
-	
 	
 	
 	//~ Querying two nodes that exist in the binary tree-------------------------------------
