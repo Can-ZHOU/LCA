@@ -1,5 +1,12 @@
 /**
- * Found the solutions in Internet.
+ * As the permission mentioned in class, I found the solution in Internet.
+ * 
+ * !!! Important !!!
+ * After fixed some bugs in original solution, there still has few bug in the code which is hard to deal with.
+ * As you suggest, I leave it and more focus on test code.
+ * So, it should have tests cannot be passed in unit test.
+ * I have labeled them in the test code.
+ * 
  * Reference: https://github.com/cassidke/software-eng/blob/master/Assignment%201/DAG.java
  * 			  https://algs4.cs.princeton.edu/42digraph/Digraph.java.html
  */
