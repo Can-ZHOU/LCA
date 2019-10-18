@@ -16,10 +16,11 @@
   
 ### Visualization the test cases in LCA_DAG_Test.java
 - This is to make the tests I did for DAG look clearer.
-- DAG with a node that does not exist in the graph.
+- LCA_DAG with a node that does not exist in the graph.
   - DAG-0: Empty DAG
   - ![Alt text](https://github.com/Can-ZHOU/Graph_Visualization/blob/master/DAG-1%262.png)
-
-
-- DAG with two node exist in the graph.  
+- LCA_DAG with two node exist in the graph.  
+  - ![Alt text](https://github.com/Can-ZHOU/Graph_Visualization/blob/master/DAG-3%264%265%266.png)
+- LCA_DAG with wrong DAG
+  - ![Alt text](https://github.com/Can-ZHOU/Graph_Visualization/blob/master/DAG-7%268.png)
   
