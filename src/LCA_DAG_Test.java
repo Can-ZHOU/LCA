@@ -189,7 +189,7 @@ public class LCA_DAG_Test {
 	}
 	
 	
-	//~ Querying the wrong binary tree-------------------------------------------------------------
+	//~ Querying the wrong DAG-------------------------------------------------------------        
 		/**
 		 * Testing the the wrong DAG -- a DAG with duplicated nodes.
 		 * 
