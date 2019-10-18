@@ -3,7 +3,7 @@ Written by
 Can ZHOU (19324118)  
 If there has any confusion, Please email me: zhouc@tcd.ie  
 
-### I have visualized the test cases. More details please go to this GitHub repository: https://github.com/Can-ZHOU/Graph_Visualization
+**I have visualized the test cases. More details please go to this GitHub repository:** https://github.com/Can-ZHOU/Graph_Visualization
 
 
 ## Assignment one: LCA with binary tree [In **Master** branch]
