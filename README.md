@@ -1,9 +1,11 @@
-## CS3012 Software Engineering Assignment 1&2:
+## CS3012 Software Engineering Assignment 1 & 2 :
 Written by  
 Can ZHOU (19324118)  
 If there has any confusion, Please email me: zhouc@tcd.ie  
 
-**I have visualized the test cases. More details please go to this GitHub repository:** https://github.com/Can-ZHOU/Graph_Visualization
+**I have visualized the test cases which can be seen in this README file.**   
+If you'd like to see the original images, please go to this GitHub repository:  
+https://github.com/Can-ZHOU/Graph_Visualization
 
 
 ## Assignment one: LCA with binary tree [In **Master** branch]
