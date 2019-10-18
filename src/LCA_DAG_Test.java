@@ -114,6 +114,50 @@ public class LCA_DAG_Test {
 	}
 	
 	/**
+	 * Testing the complex DAG.
+	 * 
+	 * ****** Visualization ******
+	 *             0
+	 *           /   \
+	 *          1     2
+	 *         /     /
+	 *        3     4 
+	 *       /     / \
+	 *      5     6   7
+	 *            |    
+	 *            8
+	 *          / | \
+	 *         9 10  11
+	 *                \
+	 *                 12
+	 *                  \
+	 *                   13  
+	 * ***************************
+	 */
+	@Test
+	public void testCcomplex() {
+		LCA_DAG graph = new LCA_DAG(14);
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 2);
+		graph.addEdge(1, 3);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 5);
+		graph.addEdge(4, 6);
+		graph.addEdge(4, 7);
+		graph.addEdge(6, 8);
+		graph.addEdge(8, 9);
+		graph.addEdge(8, 10);
+		graph.addEdge(8, 11);
+		graph.addEdge(11, 12);
+		graph.addEdge(12, 13);
+		
+		assertEquals("When their parents (upper levels) are their ancestors -- case one", 0, graph.findLCA(2, 1));
+		assertEquals("When their parents (upper levels) are their ancestors -- case two", 0, graph.findLCA(3, 2));
+		assertEquals("When one of node is their LCA.", 4, graph.findLCA(4, 6));
+		assertEquals("When their common ancestor is themselves", 2, graph.findLCA(2, 2));
+	}
+	
+	/**
 	 * Testing the linear DAG.
 	 * 
 	 * ****** Visualization ******
